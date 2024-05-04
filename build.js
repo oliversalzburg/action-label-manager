@@ -4,10 +4,11 @@ esbuild
   .build({
     bundle: true,
     entryPoints: ["./source/main.ts"],
-    external: ["@actions/core"],
+    external: ["os"],
     format: "esm",
+    inject: ["source/cjs-shim.ts"],
     outfile: "./output/main.js",
     platform: "node",
-    target: "node20",
+    target: "node18",
   })
   .catch(console.error);
