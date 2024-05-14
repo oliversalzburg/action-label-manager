@@ -5,6 +5,9 @@ inputs:
   repo_token:
     required: true
     description: Needs `secrets.GITHUB_TOKEN` to talk to the API.
+  force:
+    required: false
+    description: If set to `true`, will remove labels that are no longer defined in the configuration.
 runs:
   using: node20
   main: lib/main.js

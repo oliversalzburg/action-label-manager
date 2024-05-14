@@ -6,6 +6,7 @@ import YAML from "yaml";
 export interface LabelManagerOptions {
   context: Context;
   core: typeof core;
+  force: boolean;
   labelsYaml: string;
   octokit: InstanceType<typeof GitHub>;
 }
@@ -96,6 +97,18 @@ export class LabelManager {
     for (const label of existingLabels.data) {
       const labelIsConfigured = Object.keys(config.labels).includes(label.name);
       if (!labelIsConfigured) {
+        if (this.#options.force) {
+          this.#options.core.notice(
+            `Label '${label.name}' is not configured in labels.yml. Deleting...`,
+          );
+          await octokit.rest.issues.deleteLabel({
+            name: label.name,
+            owner: this.#options.context.repo.owner,
+            repo: this.#options.context.repo.repo,
+          });
+          continue;
+        }
+
         this.#options.core.notice(
           `Label '${label.name}' is not configured in labels.yml. It should be deleted.`,
         );
