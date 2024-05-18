@@ -9,6 +9,6 @@ esbuild
     inject: ["source/cjs-shim.ts"],
     outfile: "./output/main.js",
     platform: "node",
-    target: "node18",
+    target: "node20",
   })
   .catch(console.error);
