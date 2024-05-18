@@ -6,7 +6,7 @@ import YAML from "yaml";
 export interface LabelManagerOptions {
   context: Context;
   core: typeof core;
-  force: boolean;
+  force?: boolean;
   labelsYaml: string;
   octokit: InstanceType<typeof GitHub>;
 }

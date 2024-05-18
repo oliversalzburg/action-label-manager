@@ -3,9 +3,7 @@
 ## Release Process
 
 ```shell
-yarn clean
-yarn build
-cp output/main.js lib/main.js
+yarn build:export
 git add --all
 npm version patch
 git push

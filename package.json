@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
+  "private": true,
   "name": "@oliversalzburg/action-label-manager",
   "version": "0.0.9",
   "license": "MIT",
@@ -7,12 +8,14 @@
   "type": "module",
   "scripts": {
     "build": "node build.js",
+    "build:export": "yarn run rebuild && cp output/main.js lib/main.js",
     "clean": "rm -rf ./output",
     "lint": "yarn run lint:all",
     "lint:all": "yarn run lint:eslint && yarn run lint:prettier && yarn run lint:tsc",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
     "lint:tsc": "tsc --noEmit",
+    "rebuild": "yarn run clean && yarn run build",
     "test": "tsc && node $(yarn bin mocha) output/*.test.js",
     "test:coverage": "tsc && c8 --reporter=html-spa node $(yarn bin mocha) output/*.test.js"
   },
