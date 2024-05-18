@@ -1,6 +1,10 @@
 name: "KS Label Manager"
 description: "Manages labels on the Kitten Science repositories."
 author: "Oliver Salzburg"
+branding:
+  color: "blue"
+  icon: "tag"
+
 inputs:
   repo_token:
     required: true
