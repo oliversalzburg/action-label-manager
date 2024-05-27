@@ -53,5 +53,5 @@
 ## Release Process
 
 ```shell
-npm version patch
+npm version patch --message "chore: Version bump %s"
 ```
