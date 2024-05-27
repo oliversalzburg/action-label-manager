@@ -1,0 +1,57 @@
+name: Sync Action Inputs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  update-doc:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        with:
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+      - name: Run auto-doc
+        uses: tj-actions/auto-doc@79cbc18cd7c4b037bb2fe25199cb14fef4bbad43 # v3
+
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@9ed3155b72ba709881c967f75611fc5852f773b9 # v13.1
+        id: verify-changed-files
+        with:
+          files: |
+            README.md
+
+      - name: Select NodeJS version
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        env:
+          # renovate: datasource=docker depName=node versioning=node
+          NODE_VERSION: "20.13.1"
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Format properly
+        run: yarn lint:prettier --write
+
+      - name: Create Pull Request
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6
+        with:
+          base: main
+          title: "docs: Synchronize `README.md` with `action.yml`"
+          branch: fix/auto-doc-update-readme
+          commit-message: "docs: Synchronize README.md with action.yml"
+          body: "auto-doc: Updated README.md"
