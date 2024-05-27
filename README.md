@@ -41,6 +41,15 @@
 
 ## Inputs
 
+<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
+
+| INPUT                                                          | TYPE   | REQUIRED | DEFAULT | DESCRIPTION                                                                                   |
+| -------------------------------------------------------------- | ------ | -------- | ------- | --------------------------------------------------------------------------------------------- |
+| <a name="input_force"></a>[force](#input_force)                | string | false    |         | If set to `true`, will <br>remove labels that are no <br>longer defined in the configuration. |
+| <a name="input_repo_token"></a>[repo_token](#input_repo_token) | string | true     |         | Needs `secrets.GITHUB_TOKEN` to talk to <br>the API.                                          |
+
+<!-- AUTO-DOC-INPUT:END -->
+
 ## Release Process
 
 ```shell
