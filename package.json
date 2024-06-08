@@ -27,7 +27,7 @@
     "@actions/github": "5.1.1",
     "@oliversalzburg/js-utils": "0.0.46",
     "tslib": "2.6.3",
-    "yaml": "2.4.3"
+    "yaml": "2.4.5"
   },
   "devDependencies": {
     "@eslint/js": "9.4.0",
