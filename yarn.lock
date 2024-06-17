@@ -599,7 +599,7 @@ __metadata:
     "@actions/github": "npm:5.1.1"
     "@eslint/js": "npm:9.5.0"
     "@kie/mock-github": "npm:2.0.1"
-    "@oliversalzburg/eslint-config": "npm:0.0.8"
+    "@oliversalzburg/eslint-config": "npm:0.0.10"
     "@oliversalzburg/js-utils": "npm:0.0.46"
     "@types/chai": "npm:4.3.16"
     "@types/eslint": "npm:8.56.10"
@@ -626,9 +626,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@oliversalzburg/eslint-config@npm:0.0.8":
-  version: 0.0.8
-  resolution: "@oliversalzburg/eslint-config@npm:0.0.8"
+"@oliversalzburg/eslint-config@npm:0.0.10":
+  version: 0.0.10
+  resolution: "@oliversalzburg/eslint-config@npm:0.0.10"
   peerDependencies:
     "@eslint/js": 9.5.0
     eslint-config-prettier: 9.1.0
@@ -636,7 +636,7 @@ __metadata:
     eslint-plugin-tsdoc: 0.3.0
     globals: 15.5.0
     typescript-eslint: 8.0.0-alpha.30
-  checksum: 10c0/15197818083f26fd862e442a1099d5376a68c5c76b823f907e3ca071c27cf089af45f26ad34a95061effe3c10f8e65628a9124f8ca6a3a7b6cb3b7a1eee0ae2c
+  checksum: 10c0/b84f2e675a078355eee52abf8a8aebe6c11ec9e2b6149ca7b2ff4b96178b9a88b8264c9dd05a34f31251a067310993db6836d85fda27a338ec5307ef321073ed
   languageName: node
   linkType: hard
 
