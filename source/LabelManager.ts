@@ -3,21 +3,53 @@ import { Context } from "@actions/github/lib/context.js";
 import { type GitHub } from "@actions/github/lib/utils.js";
 import YAML from "yaml";
 
+/**
+ * The options for the action.
+ */
 export interface LabelManagerOptions {
+  /**
+   * The Context we're executing in.
+   */
   context: Context;
+
+  /**
+   * A GitHub Actions Code instance.
+   */
   core: typeof core;
+
+  /**
+   * Should we force destructive operations, like deleting unmanaged labels?
+   */
   force?: boolean;
+
+  /**
+   * The YAML definition of labels on the project.
+   */
   labelsYaml: string;
+
+  /**
+   * An OctoKit instance to use to communicate with GitHub.
+   */
   octokit: InstanceType<typeof GitHub>;
 }
 
+/**
+ * Main implementation of the action.
+ */
 export class LabelManager {
   #options: LabelManagerOptions;
 
+  /**
+   * Constructs a new LabelManager instance.
+   * @param options - The options for the action.
+   */
   constructor(options: LabelManagerOptions) {
     this.#options = options;
   }
 
+  /**
+   * Execute the action.
+   */
   async main() {
     const labelsYaml = this.#options.labelsYaml;
     const config = YAML.parse(labelsYaml) as {
