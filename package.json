@@ -32,7 +32,7 @@
   "devDependencies": {
     "@eslint/js": "9.5.0",
     "@kie/mock-github": "2.0.1",
-    "@oliversalzburg/eslint-config": "0.0.8",
+    "@oliversalzburg/eslint-config": "0.0.10",
     "@types/chai": "4.3.16",
     "@types/eslint": "8.56.10",
     "@types/mocha": "10.0.6",
