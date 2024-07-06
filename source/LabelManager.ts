@@ -85,7 +85,7 @@ export class LabelManager {
       }
     }
 
-    this.#options.core.info("Updating labels...");
+    this.#options.core.summary.addRaw("Updating labels...\n");
     const labelResults = {
       created: new Array<string>(),
       updated: new Array<string>(),
@@ -98,11 +98,13 @@ export class LabelManager {
           existingLabel.color === label.color &&
           existingLabel.description === (label.description ?? null)
         ) {
-          this.#options.core.info(`Label '${name}' is up-to-date. Skipping.`);
+          this.#options.core.summary.addRaw(`Label '${name}' is up-to-date. Skipping.\n`);
           continue;
         }
 
-        this.#options.core.notice(`Label '${name}' exists with different attributes. Updating...`);
+        this.#options.core.summary.addRaw(
+          `Label '${name}' exists with different attributes. Updating...\n`,
+        );
         existingLabel.color = label.color ?? "888888";
         existingLabel.description = label.description ?? null;
         await octokit.rest.issues.updateLabel({
@@ -115,7 +117,7 @@ export class LabelManager {
         continue;
       }
 
-      this.#options.core.notice(`Creating new label '${name}'...`);
+      this.#options.core.summary.addRaw(`Creating new label '${name}'...\n`);
       await octokit.rest.issues.createLabel({
         color: label.color,
         description: label.description,
@@ -130,8 +132,8 @@ export class LabelManager {
       const labelIsConfigured = Object.keys(config.labels).includes(label.name);
       if (!labelIsConfigured) {
         if (this.#options.force) {
-          this.#options.core.notice(
-            `Label '${label.name}' is not configured in labels.yml. Deleting...`,
+          this.#options.core.summary.addRaw(
+            `:x: Label '${label.name}' is not configured in labels.yml. Deleting...\n`,
           );
           await octokit.rest.issues.deleteLabel({
             name: label.name,
@@ -141,8 +143,8 @@ export class LabelManager {
           continue;
         }
 
-        this.#options.core.notice(
-          `Label '${label.name}' is not configured in labels.yml. It should be deleted.`,
+        this.#options.core.summary.addRaw(
+          `:heavy_exclamation_mark: Label '${label.name}' is not configured in \`labels.yml\`. It should be deleted.\n`,
         );
       }
     }
@@ -150,6 +152,6 @@ export class LabelManager {
     this.#options.core.setOutput("label_created", labelResults.created);
     this.#options.core.setOutput("label_updated", labelResults.updated);
 
-    this.#options.core.info("Done.");
+    this.#options.core.summary.addRaw("Done.");
   }
 }
