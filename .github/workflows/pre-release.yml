@@ -1,16 +1,28 @@
-name: Release
+name: Pre-Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      wants-github-release:
+        default: false
+        description: Create a GitHub release?
+        required: false
+        type: boolean
+
+concurrency: pre-release
+
+env:
+  DEV_BUILD: true
 
 jobs:
   qa:
     name: 🔹 QA
     uses: oliversalzburg/workflows/.github/workflows/qa-github-action-nodejs.yml@main
 
-  release:
+  pre-release:
     name: 🔹 Publish
     needs: qa
     permissions:
@@ -21,5 +33,5 @@ jobs:
       pull-requests: read
     uses: oliversalzburg/workflows/.github/workflows/publish-github-action-nodejs.yml@main
     with:
-      is-canary: false
-      wants-github-release: true
+      is-canary: true
+      wants-github-release: ${{ inputs.wants-github-release || false }}
