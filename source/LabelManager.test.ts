@@ -43,7 +43,7 @@ labels:
   new-label:
     description: A new label
   `,
-    octokit: getOctokit("invalid-token"),
+    octokit: getOctokit("invalid-token", { request: { fetch } }),
   });
 
   await labelManager.main();
