@@ -1,5 +1,9 @@
 # Label Manager Action
 
+[![Pre-Release](https://github.com/oliversalzburg/action-label-manager/actions/workflows/pre-release.yml/badge.svg)](https://github.com/oliversalzburg/action-label-manager/actions/workflows/pre-release.yml)
+
+Maintain the labels on your GitHub repository through a file _in_ your repository.
+
 ## Usage
 
 1. Create `.github/labels.yml` in your repository, and define some labels.
