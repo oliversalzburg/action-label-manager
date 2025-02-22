@@ -40,7 +40,7 @@ Maintain the labels on your GitHub repository through a file _in_ your repositor
          - uses: actions/checkout@v4
          - uses: oliversalzburg/action-label-manager@v0.0.9
            with:
-             repo_token: ${{ secrets.GITHUB_TOKEN }}
+             repo-token: ${{ secrets.GITHUB_TOKEN }}
    ```
 
 ## Inputs
@@ -50,7 +50,7 @@ Maintain the labels on your GitHub repository through a file _in_ your repositor
 | INPUT                                                          | TYPE   | REQUIRED | DEFAULT | DESCRIPTION                                                                                   |
 | -------------------------------------------------------------- | ------ | -------- | ------- | --------------------------------------------------------------------------------------------- |
 | <a name="input_force"></a>[force](#input_force)                | string | false    |         | If set to `true`, will <br>remove labels that are no <br>longer defined in the configuration. |
-| <a name="input_repo_token"></a>[repo_token](#input_repo_token) | string | true     |         | Needs `secrets.GITHUB_TOKEN` to talk to <br>the API.                                          |
+| <a name="input_repo-token"></a>[repo-token](#input_repo-token) | string | true     |         | Needs `secrets.GITHUB_TOKEN` to talk to <br>the API.                                          |
 
 <!-- AUTO-DOC-INPUT:END -->
 

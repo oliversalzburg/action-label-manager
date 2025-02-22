@@ -15,13 +15,13 @@ export const main = async (): Promise<void> => {
       throw new Error("Missing GITHUB_REPOSITORY");
     }
 
-    const repo_token = core.getInput("repo_token", { required: true });
+    const token = core.getInput("repo-token", { required: true });
     const labelManager = new LabelManager({
       core,
       context,
       force: core.getInput("force") === "true",
       labelsYaml: await fs.readFile(".github/labels.yml", "utf8"),
-      octokit: getOctokit(repo_token),
+      octokit: getOctokit(token),
     });
 
     await labelManager.main();

@@ -6,7 +6,7 @@ branding:
   icon: tag
 
 inputs:
-  repo_token:
+  repo-token:
     required: true
     description: Needs `secrets.GITHUB_TOKEN` to talk to the API.
   force:
