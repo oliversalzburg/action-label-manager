@@ -1,27 +1,31 @@
-.PHONY: default build clean docs pretty lint test run
+.PHONY: default build clean docs git-hook pretty lint test run
 
-default: clean build
+default: build
 
 build: output
 
 clean:
-	rm -rf ./output
+	rm --force --recursive node_modules output tsconfig.tsbuildinfo
 
 docs:
 	@echo "This project has no documentation."
 
-pretty:
-	yarn biome check --write --no-errors-on-unmatched
+git-hook:
+	echo "make pretty" > .git/hooks/pre-commit
 
-lint:
+pretty: node_modules
+	yarn biome check --write --no-errors-on-unmatched
+	npm pkg fix
+
+lint: node_modules
 	yarn biome check .
 	yarn tsc --noEmit
 
-test: clean
+test:
 	yarn tsc
 	yarn c8 --reporter=html-spa node $(shell yarn bin mocha) output/*.test.js
 
-run: clean build
+run: build
 	node ./output/main.js
 
 
