@@ -17,8 +17,8 @@ export const main = async (): Promise<void> => {
 
     const token = core.getInput("repo-token", { required: true });
     const labelManager = new LabelManager({
-      core,
       context,
+      core,
       force: core.getInput("force") === "true",
       labelsYaml: await fs.readFile(".github/labels.yml", "utf8"),
       octokit: getOctokit(token),

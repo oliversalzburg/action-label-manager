@@ -71,8 +71,8 @@ export class LabelManager {
 
     const existingLabels = await octokit.rest.issues.listLabelsForRepo({
       owner: this.#options.context.repo.owner,
-      repo: this.#options.context.repo.repo,
       per_page: 100,
+      repo: this.#options.context.repo.repo,
     });
     this.#options.core.debug("Existing labels:");
     for (const label of existingLabels.data) {
