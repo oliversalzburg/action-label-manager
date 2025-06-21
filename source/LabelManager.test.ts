@@ -13,24 +13,24 @@ it("runs", async () => {
 
   moctokit.rest.issues
     .listLabelsForRepo()
-    .reply({ status: 200, data: [{ color: "000000", name: "dependencies" }, { name: "foo" }] });
+    .reply({ data: [{ color: "000000", name: "dependencies" }, { name: "foo" }], status: 200 });
 
   moctokit.rest.issues
     .createLabel({
+      description: "A new label",
+      name: "new-label",
       owner: "kitten-science",
       repo: "test",
-      name: "new-label",
-      description: "A new label",
     })
-    .reply({ status: 201, data: { name: "new-label" } });
+    .reply({ data: { name: "new-label" }, status: 201 });
 
   moctokit.rest.issues
     .updateLabel({
+      name: "dependencies",
       owner: "kitten-science",
       repo: "test",
-      name: "dependencies",
     })
-    .reply({ status: 200, data: { name: "dependencies" } });
+    .reply({ data: { name: "dependencies" }, status: 200 });
 
   const labelManager = new LabelManager({
     context,
