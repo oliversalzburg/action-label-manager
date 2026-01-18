@@ -16,15 +16,15 @@ docs:
 git-hook:
 	echo "make pretty" > .git/hooks/pre-commit
 
-pretty: node_modules
+pretty: node_modules/.package-lock.json
 	npm exec -- biome check --write --no-errors-on-unmatched
 	npm pkg fix
 
-lint: node_modules
+lint: node_modules/.package-lock.json
 	npm exec -- biome check .
 	npm exec -- tsc --noEmit
 
-test:
+test: node_modules/.package-lock.json
 	npm exec -- tsc
 	NODE_OPTIONS=--enable-source-maps TZ=UTC npm exec -- c8 --reporter=html-spa mocha output/*.test.js
 
