@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
-import { Context } from "@actions/github/lib/context.js";
-import { type GitHub } from "@actions/github/lib/utils.js";
+import { context } from "@actions/github";
+import { type GitHub } from "@actions/github/lib/utils";
 import YAML from "yaml";
 
 /**
@@ -10,7 +10,7 @@ export interface LabelManagerOptions {
   /**
    * The Context we're executing in.
    */
-  context: Context;
+  context: typeof context;
 
   /**
    * A GitHub Actions Code instance.
