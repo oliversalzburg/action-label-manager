@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import core from "@actions/core";
+import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 import { redirectErrorsToConsole } from "@oliversalzburg/js-utils/errors/console.js";
 import { LabelManager } from "./LabelManager.js";
