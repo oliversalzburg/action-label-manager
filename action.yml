@@ -13,5 +13,5 @@ inputs:
     required: false
     description: If set to `true`, will remove labels that are no longer defined in the configuration.
 runs:
-  using: node20
+  using: node24
   main: lib/main.js
