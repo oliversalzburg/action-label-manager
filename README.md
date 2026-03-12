@@ -47,10 +47,10 @@ Maintain the labels on your GitHub repository through a file _in_ your repositor
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-| INPUT                                                          | TYPE   | REQUIRED | DEFAULT | DESCRIPTION                                                                                   |
-| -------------------------------------------------------------- | ------ | -------- | ------- | --------------------------------------------------------------------------------------------- |
-| <a name="input_force"></a>[force](#input_force)                | string | false    |         | If set to `true`, will <br>remove labels that are no <br>longer defined in the configuration. |
-| <a name="input_repo-token"></a>[repo-token](#input_repo-token) | string | true     |         | Needs `secrets.GITHUB_TOKEN` to talk to <br>the API.                                          |
+|                             INPUT                              |  TYPE  | REQUIRED | DEFAULT |                                          DESCRIPTION                                           |
+|----------------------------------------------------------------|--------|----------|---------|------------------------------------------------------------------------------------------------|
+|        <a name="input_force"></a>[force](#input_force)         | string |  false   |         | If set to `true`, will <br>remove labels that are no <br>longer defined in the configuration.  |
+| <a name="input_repo-token"></a>[repo-token](#input_repo-token) | string |   true   |         |                     Needs `secrets.GITHUB_TOKEN` to talk to <br>the API.                       |
 
 <!-- AUTO-DOC-INPUT:END -->
 
