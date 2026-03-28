@@ -1,6 +1,7 @@
 # Label Manager Action
 
-[![Pre-Release](https://github.com/oliversalzburg/action-label-manager/actions/workflows/pre-release.yml/badge.svg)](https://github.com/oliversalzburg/action-label-manager/actions/workflows/pre-release.yml)
+> [!CAUTION]
+> I no longer have excessive labeling needs. Thus, this action has been **archived as of 2026-03-28**.
 
 Maintain the labels on your GitHub repository through a file _in_ your repository.
 
